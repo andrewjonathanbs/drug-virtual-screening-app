@@ -1,4 +1,4 @@
-rdkit
+rdkit==2023.03.01
 numpy==1.21.1
 pandas==1.4.3
 pycaret==3.0.4
