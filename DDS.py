@@ -3,7 +3,8 @@
 
 
 # In[ ]:
-
+!pip install rdkit
+!pip install pycaret
 
 import streamlit as st
 import pandas as pd
