@@ -8,6 +8,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import rdkit
+import pycaret
 from rdkit.Chem import AllChem
 from rdkit import Chem
 from rdkit.Chem import Descriptors
