@@ -1,0 +1,4 @@
+pandas-dev
+pycaret-dev
+rdkit-dev
+numpy-dev
