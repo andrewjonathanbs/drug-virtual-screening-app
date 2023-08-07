@@ -136,8 +136,31 @@ def morgan_fpts(data):
 
 # In[ ]:
 
+st.markdown(
+    """
+    <style>
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
+    """
+)
+
 
 if st.button("Make ML Models"):
+        with st.empty():
+            st.markdown('<div class="loader"></div>', unsafe_allow_html=True)
         st.write("Preprocess the data...")
         data_processing(df)
         df3 = log_the_smiles(df)
@@ -187,6 +210,7 @@ if st.button("Make ML Models"):
         valid_df['predicted_class'] = dfp['prediction_label']
         valid_df['prediction_score'] = dfp['prediction_score']    
         st.write("Prediction complete!")
+        st.markdown('<h3>Loading Completed!</h3>', unsafe_allow_html=True)
         def create_download_link(df, filename="predictions.csv"):
             csv = df.to_csv(index=False)
             b64 = base64.b64encode(csv.encode()).decode()  # Encode as base64
