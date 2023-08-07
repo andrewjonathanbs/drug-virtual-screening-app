@@ -101,7 +101,7 @@ PyJWT==2.6.0
 pyLDAvis==3.4.0
 Pympler==1.0.1
 pynndescent==0.5.8
-pyod==1.0.7
+pyod==1.0.8
 pyparsing==3.0.9
 pyrsistent==0.19.3
 python-dateutil==2.8.2
