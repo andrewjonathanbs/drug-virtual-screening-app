@@ -157,8 +157,11 @@ if st.button("Make ML Models"):
         result_df_2 = result_df_2.dropna(subset=['Smiles','class'])
         result_df_3 = result_df_2.drop('Smiles', axis=1)
         experiment = setup(result_df_3, target='class')
+        st.text(experiment)
         st.write("Comparing ML models...")
-        best_model = compare_models()
+        selected_models = ['lr','dt','svm','lightgbm','ridge','ada','knn','rf','xgboost']
+        best_model = compare_models(include=selected_models)
+        st.text(best_models)
         st.write("Preparing the best model...")
         tuned_model = create_model(best_model)
         final_model = finalize_model(best_model)
