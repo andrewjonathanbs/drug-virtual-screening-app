@@ -159,7 +159,7 @@ if st.button("Make ML Models"):
         experiment = setup(result_df_3, target='class')
         st.text(experiment)
         st.write("Comparing ML models...")
-        selected_models = ['lr','dt','svm','lightgbm','ridge','ada','knn','rf','xgboost']
+        selected_models = ['lr','dt','svm','lightgbm','ridge','ada','knn','rf']
         best_model = compare_models(include=selected_models)
         st.text(best_models)
         st.write("Preparing the best model...")
