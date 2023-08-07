@@ -1,4 +1,4 @@
 streamlit==1.25.0
 rdkit==2023.3.2
-sklearn==0.24
+sklearn==0.0
 pycaret==3.0.4
