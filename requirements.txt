@@ -57,7 +57,7 @@ jupyterlab-widgets==3.0.5
 kiwisolver==1.4.4
 kmodes==0.12.2
 lightgbm==3.3.5
-llvmlite==0.37.0
+llvmlite==0.38.1
 Mako==1.2.4
 Markdown==3.4.1
 markdown-it-py==2.1.0
