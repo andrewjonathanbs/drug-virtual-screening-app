@@ -135,17 +135,24 @@ def morgan_fpts(data):
 
 
 if st.button("Make ML Models"):
+        progress_bar = st.progress(0)
         st.write("Preprocess the data...")
         data_processing(df)
         df3 = log_the_smiles(df)
         df4 = df3[['Smiles', 'class']]
         df5 = data_processing_1(df4)
+    
+        progress_bar.progress(12)
+    
         st.write("Extracting 200 smiles features...")
         Mol_descriptors,desc_names = RDkit_descriptors(df5['Smiles'])
         df_with_200_descriptors = pd.DataFrame(Mol_descriptors,columns=desc_names)
         df5_reset = df5.reset_index(drop=True)
         df_with_200_descriptors_reset = df_with_200_descriptors.reset_index(drop=True)
         result_df_1 = pd.concat([df5_reset, df_with_200_descriptors_reset], axis=1)
+
+        progress_bar.progress(25)
+    
         st.write("Extracting 2000 smiles features")
         Morgan_fpts = morgan_fpts(df5['Smiles'])
         Morgan_fingerprints = pd.DataFrame(Morgan_fpts,columns=['Col_{}'.format(i) for i in range(Morgan_fpts.shape[1])])
@@ -155,12 +162,20 @@ if st.button("Make ML Models"):
         result_df_2 = result_df_2.dropna(subset=['Smiles','class'])
         result_df_3 = result_df_2.drop('Smiles', axis=1)
         experiment = setup(result_df_3, target='class')
+
+        progress_bar.progress(38)
+    
         st.write("Comparing ML models...")
         best_model = compare_models()
+
+        progress_bar.progress(51)
+
         st.write("Preparing the best model...")
         tuned_model = create_model(best_model)
         final_model = finalize_model(best_model)
-        st.write("Model Completed! Now, upload the data you want to predict!")
+
+        progress_bar.progress(63)
+
         st.write("Predictions are in progress...")
         st.write("Preprocessing the data...")
         valid_mask = df_pred['Smiles'].apply(is_valid_smiles)
@@ -168,6 +183,9 @@ if st.button("Make ML Models"):
         dfa = data_processing_nosv(valid_df)
         dfb = data_processing_1(dfa)
         st.write("Extracting molecular features from Smiles")
+
+        progress_bar.progress(76)
+    
         Mol_descriptorsc,desc_namesc = RDkit_descriptors(dfb['Smiles'])
         dfb_with_200_descriptors = pd.DataFrame(Mol_descriptorsc,columns=desc_namesc)
         dfb_reset = dfb.reset_index(drop=True)
@@ -177,6 +195,9 @@ if st.button("Make ML Models"):
         Morgan_fingerprintsc = pd.DataFrame(Morgan_fptsc,columns=['Col_{}'.format(i) for i in range(Morgan_fptsc.shape[1])])
         result_dfb_1_reset = result_dfb_1.reset_index(drop=True)
         Morgan_fingerprintsc_reset = Morgan_fingerprintsc.reset_index(drop=True)
+
+        progress_bar.progress(88)
+
         st.write("Applying ML model to the data...")
         result_dfb_2 = pd.concat([result_dfb_1_reset,Morgan_fingerprintsc_reset], axis=1)
         result_dfb_2 = result_dfb_2.dropna(subset=['Smiles'])
@@ -184,6 +205,9 @@ if st.button("Make ML Models"):
         dfp = pd.DataFrame(predictions)
         valid_df['predicted_class'] = dfp['prediction_label']
         valid_df['prediction_score'] = dfp['prediction_score']
+
+        progress_bar.progress(101)
+    
         st.write("Prediction complete!")
         def create_download_link(df, filename="predictions.csv"):
             csv = df.to_csv(index=False)
