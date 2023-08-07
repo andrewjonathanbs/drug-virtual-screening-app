@@ -19,24 +19,21 @@ import base64
 
 
 #CSV Data Input
-with st.container():
-    st.title("SimpleScreen: Machine Learning Model Creator for Virtual Screening")
-    st.subheader("Created by Andrew Jonathan Brahms Simangunsong.")
-    st.write("In this site, you can create machine learning models to virtual screen drug candidates without any code!")
+st.title("SimpleScreen: Machine Learning Model Creator for Virtual Screening")
+st.subheader("Created by Andrew Jonathan Brahms Simangunsong.")
+st.write("In this site, you can create machine learning models to virtual screen drug candidates without any code!")
 
-with st.container():
-    st.subheader("How SimpleScreen works:")
-    st.write("SimpleScreen will perform feature extraction on the molecule Smiles then automatically create classifier machine learning models to classify activity potential based on the standard value (IC50 or EC50).")
-    st.write("SimpleScreen will choose the best model based on Accuracy, AUC score, Recall, Precision, F1, Kappa score, MCC, and Time Taken.")
-    st.write("Then, it will tune the model and predict other dataset with the model.")
+st.subheader("How SimpleScreen works:")
+st.write("SimpleScreen will perform feature extraction on the molecule Smiles then automatically create classifier machine learning models to classify activity potential based on the standard value (IC50 or EC50).")
+st.write("SimpleScreen will choose the best model based on Accuracy, AUC score, Recall, Precision, F1, Kappa score, MCC, and Time Taken.")
+st.write("Then, it will tune the model and predict other dataset with the model.")
 
-with st.container():
-    st.subheader("How to use SimpleScreen:")
-    st.write("First, upload your data in CSV format.")
-    st.write("Make sure the data contains Smiles in a column named Smiles and the Standard Value of the activity type in a column named Standard Value")
-    st.write("After that, we shall create machine learning models based on your data and choose the best model for you to use.")
-    st.write("Then, you can upload the data you want to predict.")
-    st.write("Make sure the data contains Smiles in a column named Smiles.")
+st.subheader("How to use SimpleScreen:")
+st.write("First, upload your data in CSV format.")
+st.write("Make sure the data contains Smiles in a column named Smiles and the Standard Value of the activity type in a column named Standard Value")
+st.write("After that, we shall create machine learning models based on your data and choose the best model for you to use.")
+st.write("Then, you can upload the data you want to predict.")
+st.write("Make sure the data contains Smiles in a column named Smiles.")
 
 
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
