@@ -20,6 +20,7 @@ import base64
 
 #CSV Data Input
 st.title("SimpleScreen: Machine Learning Model Creator for Virtual Screening")
+st.write("---")
 st.subheader("Created by Andrew Jonathan Brahms Simangunsong.")
 st.write("In this site, you can create machine learning models to virtual screen drug candidates without any code!")
 st.write("---")
