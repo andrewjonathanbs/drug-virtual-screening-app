@@ -20,16 +20,13 @@ import base64
 
 #CSV Data Input
 st.title("SimpleScreen: Machine Learning Model Creator for Virtual Screening")
-st.write("---")
 st.subheader("Created by Andrew Jonathan Brahms Simangunsong.")
 st.write("In this site, you can create machine learning models to virtual screen drug candidates without any code!")
-st.write("---")
 
 st.subheader("How SimpleScreen works:")
 st.write("SimpleScreen will perform feature extraction on the molecule Smiles then automatically create classifier machine learning models")
 st.write("based on the standard value (IC50 or EC50). Then it will choose the best model based on Accuracy, AUC score, Recall, Precision, F1,")
 st.write("Kappa score, MCC, and Time Taken. Then, it will tune the model and predict other dataset with the model.")
-st.write("---")
 
 st.subheader("How to use SimpleScreen:")
 st.write("First, upload your data in CSV format.")
